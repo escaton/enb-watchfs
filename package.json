@@ -1,0 +1,29 @@
+{
+    "author": {
+        "name": "Egor Blinov",
+        "email": "escaton@yandex-team.ru"
+    },
+    "description": "ENB tool for checkouting fs state and rebuild targets",
+    "name": "enb-watchfs",
+    "version": "0.0.1",
+    "main": "./tools/watchfs",
+    "contributors": [
+        {
+            "name": "Egor Blinov",
+            "email": "escaton@yandex-team.ru"
+        }
+    ],
+    "engines": {
+        "node": ">= 0.8.0"
+    },
+    "dependencies": {
+        "vow": ">=0.3.3",
+        "vow-fs": ">=0.1.11",
+        "chokidar": ">=0.6.0"
+    },
+    "peerDependencies": {
+        "enb": ">= 0.7.15"
+    },
+    "readme": "",
+    "readmeFilename": "README.md"
+}
