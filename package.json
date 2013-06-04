@@ -19,10 +19,11 @@
     "dependencies": {
         "vow": ">=0.3.3",
         "vow-fs": ">=0.1.11",
+        "inherit": ">=1.0.4",
         "chokidar": ">=0.6.0"
     },
     "peerDependencies": {
-        "enb": ">= 0.7.15"
+        "enb": ">= 0.8.6"
     },
     "readme": "",
     "readmeFilename": "README.md"
