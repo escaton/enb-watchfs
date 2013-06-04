@@ -12,8 +12,9 @@ var api = inherit(moduleConfig, {
         this._builder = null;
         this._levels = [];
         this._rules = {};
-        this._filesRegExp = /\.(\S+)$/;
+        this._filesRegExp = /(?:\.)([.\w]+)$/;
         this._logger = null;
+        this._queue = {};
     },
 
 
@@ -55,21 +56,20 @@ var api = inherit(moduleConfig, {
     _rebuildTarget: function(rule) {
         var _this = this;
 
-        if (rule.buildingState === 'ready') {
-            rule.buildingState = 'building';
-        } else {
-            rule.buildingState = 'needRebuild';
-        }
-
         Vow.all(rule.targets.map(function(item) {
-            _this._builder(item);
+            // if (_this._queue[item] === 'ready') {
+            //     _this._queue[item] = 'building';
+                return _this._builder(item);
+            // } else {
+            //     _this._queue[item] = 'needRebuild';
+            // }
         })).then(function() {
-            if (rule.buildingState === 'needRebuild') {
-                rule.buildingState = 'building';
-                _this._rebuildTarget(rule);
-            } else {
-                rule.buildingState = 'ready';
-            }
+            // if (this._queue[] === 'needRebuild') {
+            //     this._queue[] = 'building';
+            //     _this._rebuildTarget(rule);
+            // } else {
+            //     this._queue[] = 'ready';
+            // }
         }, function(err) {
             _this._logger.logErrorAction('Error',err);
 
